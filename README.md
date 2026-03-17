@@ -16,14 +16,15 @@ Este sistema es el resultado de la evolución de un proyecto formativo desarroll
 
 El proyecto sigue una **Arquitectura Modular (Feature-based)**, lo que permite una escalabilidad limpia y un mantenimiento sencillo:
 
-src/
-  ├── assets/         # Imágenes, logos e iconos de porcinos.
-  ├── components/     # Componentes globales reutilizables (Botones, Sidebar, UI).
-  ├── features/       # Lógica de negocio dividida por módulos (Vacunación, Pesaje, etc.).
-  ├── hooks/          # Hooks personalizados para lógica repetitiva.
-  ├── pages/          # Vistas principales que orquestan los componentes.
-  ├── services/       # Comunicación con APIs o persistencia de datos.
-  └── utils/          # Funciones de ayuda (cálculos técnicos, formateo).
+
+    src/
+      ├── assets/         # Imágenes, logos e iconos de porcinos.
+      ├── components/     # Componentes globales reutilizables (Botones, Sidebar, UI).
+      ├── features/       # Lógica de negocio dividida por módulos (Vacunación, Pesaje, etc.).
+      ├── hooks/          # Hooks personalizados para lógica repetitiva.
+      ├── pages/          # Vistas principales que orquestan los componentes.
+      ├── services/       # Comunicación con APIs o persistencia de datos.
+      └── utils/          # Funciones de ayuda (cálculos técnicos, formateo).
 
 ✨ Módulos Principales
 
