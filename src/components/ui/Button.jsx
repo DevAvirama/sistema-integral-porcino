@@ -6,13 +6,23 @@ function Button({
   ...props
 }) {
   const tones = {
-    primary: 'bg-slate-950 text-white hover:bg-slate-800',
-    accent: 'bg-emerald-500 text-slate-950 hover:bg-emerald-400',
+    primary:
+      'bg-sena-green text-white hover:bg-[#2c8300] shadow-md shadow-sena-green/30',
+
     secondary:
-      'border border-slate-300 bg-white text-slate-900 hover:border-slate-400 hover:bg-slate-50',
+      'bg-sena-blue text-white hover:bg-[#002235] shadow-md shadow-sena-blue/30',
+
+    outline:
+      'border border-white bg-transparent text-white hover:bg-white/10',
+
+    accent:
+      'bg-sena-green text-white hover:bg-[#2c8300]',
+      
     ghost:
       'border border-white/10 bg-white/0 text-slate-200 hover:bg-white/5 hover:text-white',
-    soft: 'border border-slate-200 bg-slate-50 text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-slate-950',
+
+    soft:
+      'border border-slate-200 bg-slate-50 text-slate-700 hover:border-emerald-300 hover:bg-emerald-50 hover:text-slate-950',
   }
 
   return (
