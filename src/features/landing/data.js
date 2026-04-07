@@ -1,21 +1,21 @@
 export const landingStats = [
-  { value: '+500', label: 'Granjas conectadas' },
-  { value: '24/7', label: 'Monitoreo activo' },
-  { value: '35%', label: 'Ahorro estimado en insumos' },
-  { value: '10k+', label: 'Registros analizados' },
+  { value: '+500', label: 'GRANJAS CONECTADAS' },
+  { value: '24/7', label: 'MONITOREO ACTIVO' },
+  { value: '35%', label: 'AHORRO EN INSUMOS' },
+  { value: '10k+', label: 'DATOS ANALIZADOS' },
 ]
 
 export const landingFeatures = [
   {
-    title: 'Analisis predictivo',
-    body: 'Anticipa cambios en crecimiento, consumo y estado sanitario con paneles claros y accionables.',
+    title: 'Analisis Predictivo',
+    body: 'Utiliza algoritmos avanzados para predecir el crecimiento y detectar anomalias en la produccion antes de que ocurran.',
   },
   {
-    title: 'Salud animal',
-    body: 'Centraliza seguimientos de vacunacion, alertas y observaciones por lote o corral.',
+    title: 'Salud Animal',
+    body: 'Monitoreo constante de variables ambientales y sanitarias para garantizar el bienestar animal y la calidad del producto.',
   },
   {
-    title: 'Operacion diaria',
-    body: 'Registra alimentacion, peso y reproduccion en una interfaz pensada para trabajo de campo.',
+    title: 'Alertas Inteligentes',
+    body: 'Sistema de notificaciones en tiempo real directo a tu movil sobre niveles de alimento, temperatura y seguridad.',
   },
 ]

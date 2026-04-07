@@ -39,9 +39,9 @@ function LoginForm({ fields, onChange, onSubmit }) {
         />
 
         <div className="flex items-center justify-between gap-4 text-sm">
-          <a href="/" className="font-medium text-emerald-700 transition hover:text-emerald-800">
+          <Link to="/forgot-password" className="font-medium text-emerald-700 transition hover:text-emerald-800">
             ¿Olvidaste tu contrasena?
-          </a>
+          </Link>
           <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-500">
             Demo
           </span>
