@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import BrandMark from '../BrandMark.jsx'
 import Button from '../ui/Button.jsx'
 
 function DashboardSidebar({ items }) {
+  const navigate = useNavigate();
   return (
     <aside className="w-full bg-slate-950 px-6 py-8 text-white xl:min-h-screen xl:w-80 xl:px-8">
       <BrandMark light />
@@ -22,10 +23,18 @@ function DashboardSidebar({ items }) {
           <button
             key={item}
             type="button"
-            className={`rounded-2xl px-4 py-3 text-left text-sm font-semibold transition ${
-              index === 0
-                ? 'bg-emerald-400 text-slate-950'
-                : 'bg-white/0 text-slate-300 hover:bg-white/5 hover:text-white'
+            // Cuando hagas clic en "Alertas y reportes", te llevará a tu página
+            onClick={(e) => {
+              e.preventDefault();
+              if (item === "Alertas y reportes") {
+                navigate('/dashboard/animals'); // Asegúrate que esta ruta coincida con App.jsx
+              }
+            }}
+            className={`rounded-2xl px-4 py-3 text-left text-sm font-semibold transition-all ${
+              // Mantenemos el estilo original de tu compañero
+              index === 0 
+                ? 'bg-emerald-400 text-slate-950' 
+                : 'bg-white/0 text-slate-300 hover:bg-white/5'
             }`}
           >
             {item}
@@ -36,6 +45,8 @@ function DashboardSidebar({ items }) {
       <Button as={Link} className="mt-8" to="/" tone="ghost">
         Volver a la landing
       </Button>
+
+      
     </aside>
   )
 }

@@ -2,6 +2,7 @@ import DashboardSidebar from '../../components/layout/DashboardSidebar.jsx'
 import Card from '../../components/ui/Card.jsx'
 import { getDashboardData } from '../../services/dashboard/dashboardService.js'
 import QuickActions from './components/QuickActions.jsx'
+import { Outlet } from 'react-router-dom'
 import RecentActivityTable from './components/RecentActivityTable.jsx'
 import StatsGrid from './components/StatsGrid.jsx'
 import SystemSuggestion from './components/SystemSuggestion.jsx'
@@ -29,6 +30,10 @@ function DashboardView() {
               <p className="mt-1 text-xl font-black">Lote #42</p>
             </div>
           </Card>
+
+          <section className="flex-1 px-6 py-8">
+            <Outlet />  
+          </section>
 
           <StatsGrid stats={stats} />
           <QuickActions actions={quickActions} />
