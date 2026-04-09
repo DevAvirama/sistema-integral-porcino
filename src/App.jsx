@@ -1,8 +1,9 @@
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
-import DashboardPage from './pages/DashboardPage.jsx'
+import DashboardView from './features/dashboard/DashboardView.jsx';
 import LandingPage from './pages/LandingPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import ForgotPasswordPage from './pages/ForgotPasswordPage.jsx'
+import AnimalsView from './features/animals/AnimalsView.jsx';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,13 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <DashboardPage />,
+    element: <DashboardView />, 
+    children: [
+      {
+        path: 'animals', 
+        element: <AnimalsView />,
+      },
+    ],
   },
   {
     path: '*',

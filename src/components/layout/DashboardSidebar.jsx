@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import BrandMark from '../BrandMark.jsx'
 import Button from '../ui/Button.jsx'
 
@@ -32,6 +32,8 @@ export default function DashboardSidebar({ items }) {
       <Button as={Link} className="mt-8" to="/" tone="ghost">
         Volver a la landing
       </Button>
+
+      
     </aside>
   )
 }
