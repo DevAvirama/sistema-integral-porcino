@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import BrandMark from '../BrandMark.jsx'
 import Button from '../ui/Button.jsx'
 
@@ -15,17 +15,21 @@ export default function DashboardSidebar({ items }) {
       </div>
 
       <nav className="mt-8 grid gap-2">
-        {items.map((item, index) => (
-          <button
-            key={item}
-            type="button"
-            className={`rounded-2xl px-4 py-3 text-left text-sm font-semibold transition ${index === 0
-              ? 'bg-emerald-400 text-slate-950'
-              : 'bg-white/0 text-slate-300 hover:bg-white/5 hover:text-white'
-              }`}
+        {items.map((item) => (
+          <NavLink
+            key={item.path}
+            to={item.path}
+            end={item.path === '/dashboard'}
+            className={({ isActive }) =>
+              `rounded-2xl px-4 py-3 text-left text-sm font-semibold transition ${
+                isActive
+                  ? 'bg-emerald-400 text-slate-950'
+                  : 'bg-white/0 text-slate-300 hover:bg-white/5 hover:text-white'
+              }`
+            }
           >
-            {item}
-          </button>
+            {item.name}
+          </NavLink>
         ))}
       </nav>
 
