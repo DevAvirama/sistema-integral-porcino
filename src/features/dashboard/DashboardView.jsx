@@ -2,14 +2,17 @@ import DashboardSidebar from '../../components/layout/DashboardSidebar.jsx'
 import Card from '../../components/ui/Card.jsx'
 import { getDashboardData } from '../../services/dashboard/dashboardService.js'
 import QuickActions from './components/QuickActions.jsx'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import RecentActivityTable from './components/RecentActivityTable.jsx'
 import StatsGrid from './components/StatsGrid.jsx'
 import SystemSuggestion from './components/SystemSuggestion.jsx'
 
 function DashboardView() {
   const { sidebarItems, stats, quickActions, recentActivity } = getDashboardData()
+  const location = useLocation() // Crea la constante location
 
+  // Verifica si estamos exactamente en el inicio del dashboard
+  const isDashboardHome = location.pathname === '/dashboard' || location.pathname === '/dashboard/'
   return (
     <main className="min-h-screen bg-slate-100 text-slate-900">
       <div className="mx-auto flex min-h-screen max-w-[1600px] flex-col xl:flex-row">
@@ -31,17 +34,22 @@ function DashboardView() {
             </div>
           </Card>
 
-          <section className="flex-1 px-6 py-8">
-            <Outlet />  
+          {/* Alertas y Reportes */}
+          <section className="mt-8">
+            <Outlet />
           </section>
 
-          <StatsGrid stats={stats} />
-          <QuickActions actions={quickActions} />
+          {isDashboardHome && (
+            <>
+              <StatsGrid stats={stats} />
+              <QuickActions actions={quickActions} />
 
-          <section className="mt-6 grid gap-6 2xl:grid-cols-[1.2fr_0.8fr]">
-            <RecentActivityTable rows={recentActivity} />
-            <SystemSuggestion />
-          </section>
+              <section className="mt-6 grid gap-6 2xl:grid-cols-[1.2fr_0.8fr]">
+                <RecentActivityTable rows={recentActivity} />
+                <SystemSuggestion />
+              </section>
+            </>
+          )}
         </section>
       </div>
     </main>

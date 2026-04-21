@@ -1,62 +1,63 @@
-const AddAnimalModal = ({ isOpen, onClose }) => {
+import React, { useState } from 'react';
+
+const AddAnimalModal = ({ isOpen, onClose, onSave }) => {
+    const [form, setForm] = useState({ id: '', raza: 'Duroc', edad: '', lote: '', estado: 'SALUDABLE' });
+
     if (!isOpen) return null;
 
+    const handleSubmit = (e) => {
+        e.preventDefault(); // <--- ESTO EVITA QUE LA PAGINA SE REINICIE
+        onSave(form);
+        onClose();
+        setForm({ id: '', raza: 'Duroc', edad: '', lote: '', estado: 'SALUDABLE' }); // Limpiar
+    };
+
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 backdrop-blur-sm p-4">
-            <div className="w-full max-w-md rounded-[2rem] bg-white p-8 shadow-2xl">
-                <h2 className="text-2xl font-black text-slate-950 mb-6">Registrar Nuevo Cerdo</h2>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
+            <form onSubmit={handleSubmit} className="bg-white rounded-[2.5rem] w-full max-w-md p-8 shadow-2xl">
+                <h2 className="text-2xl font-black mb-6 text-slate-900">Registrar Animal</h2>
 
-                <form className="grid gap-4">
-                    {/* ID del Animal */}
-                    <div className="grid gap-1.5">
-                        <label className="text-sm font-bold text-slate-700 ml-1">ID del Animal</label>
-                        <input
-                            type="text"
-                            placeholder="Ej: #1142"
-                            className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-400 focus:outline-none transition-all"
-                        />
-                    </div>
+                <div className="space-y-4">
+                    <input
+                        placeholder="Número de Lote (Ej: Lote #42)"
+                        required
+                        className="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:border-emerald-400"
+                        onChange={e => setForm({ ...form, lote: e.target.value })} // <--- Guardamos como 'lote'
+                    />
 
-                    {/* Raza y Edad en la misma línea */}
                     <div className="grid grid-cols-2 gap-4">
-                        <div className="grid gap-1.5">
-                            <label className="text-sm font-bold text-slate-700 ml-1">Raza</label>
-                            <select className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-400 focus:outline-none">
-                                <option>Duroc</option>
-                                <option>Landrace</option>
-                                <option>Yorkshire</option>
-                            </select>
-                        </div>
-                        <div className="grid gap-1.5">
-                            <label className="text-sm font-bold text-slate-700 ml-1">Edad (Meses)</label>
-                            <input type="number" className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-400 focus:outline-none" />
-                        </div>
+                        <select
+                            className="p-4 bg-slate-50 border rounded-2xl outline-none cursor-pointer"
+                            onChange={e => setForm({ ...form, raza: e.target.value })}
+                        >
+                            <option value="Duroc">Duroc</option>
+                            <option value="Landrace">Landrace</option>
+                            <option value="Yorkshire">Yorkshire</option>
+                        </select>
+
+                        <select
+                            className="p-4 bg-slate-50 border rounded-2xl outline-none font-bold text-emerald-600 cursor-pointer"
+                            onChange={e => setForm({ ...form, estado: e.target.value })}
+                        >
+                            <option value="SALUDABLE">Saludable </option>
+                            <option value="OBSERVACIÓN">Observación </option>
+                        </select>
                     </div>
 
-                    {/* Galpón */}
-                    <div className="grid gap-1.5">
-                        <label className="text-sm font-bold text-slate-700 ml-1">Galpón / Ubicación</label>
-                        <input type="text" placeholder="Ej: Sector B-04" className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-emerald-400 focus:outline-none" />
-                    </div>
+                    <input
+                        placeholder="Lote" required
+                        className="w-full p-4 bg-slate-50 border rounded-2xl outline-none"
+                        onChange={e => setForm({ ...form, lote: e.target.value })}
+                    />
+                </div>
 
-                    {/* Botones de Acción */}
-                    <div className="flex gap-3 mt-6">
-                        <button
-                            type="button"
-                            onClick={onClose}
-                            className="flex-1 rounded-xl px-4 py-3 text-sm font-bold text-slate-500 hover:bg-slate-100 transition-colors"
-                        >
-                            Cancelar
-                        </button>
-                        <button
-                            type="submit"
-                            className="flex-1 rounded-xl bg-emerald-400 px-4 py-3 text-sm font-bold text-slate-950 shadow-lg shadow-emerald-400/20 hover:bg-emerald-500 transition-all"
-                        >
-                            Guardar Animal
-                        </button>
-                    </div>
-                </form>
-            </div>
+                <div className="flex gap-4 mt-8">
+                    <button type="button" onClick={onClose} className="flex-1 font-bold text-slate-400 hover:text-slate-600">Cancelar</button>
+                    <button type="submit" className="flex-1 bg-emerald-400 py-4 rounded-2xl font-black text-slate-950 shadow-lg hover:bg-emerald-500 transition-colors">
+                        GUARDAR
+                    </button>
+                </div>
+            </form>
         </div>
     );
 };
