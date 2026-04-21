@@ -1,4 +1,4 @@
-import ReproductionView from '../../features/animals/ReproductionView.jsx';
+import ReproductionView from '../../features/reproduction/ReproductionView.jsx';
 
 export default function ReproductionPage() {
     return <ReproductionView />;
