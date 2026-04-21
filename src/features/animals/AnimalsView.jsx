@@ -1,41 +1,81 @@
-import { useState } from "react";
-// Agregamos "/components/" a la ruta porque ahí es donde están guardados
-import AnimalTable from "./components/AnimalTable";
-import AddAnimalModal from "./components/AddAnimalModal";
-import AnimalStatusBadge from "./components/AnimalStatusBadge";
+import React, { useState } from 'react';
+import AnimalTable from './components/AnimalTable';
+import AddAnimalModal from './components/AddAnimalModal';
 
 const AnimalsView = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [animals] = useState([
-        { id: '2024-001', raza: 'Duroc', edad: 5, galpon: 'A-102', estado: 'Saludable' },
-        { id: '2024-042', raza: 'Landrace', edad: 6, galpon: 'B-205', estado: 'Observación' },
+    const [animals, setAnimals] = useState([
+        { id: '2024-001', raza: 'Duroc', edad: 5, lote: 'Lote #42', estado: 'SALUDABLE' },
+        { id: '2024-042', raza: 'Landrace', edad: 6, lote: 'Lote #15', estado: 'OBSERVACIÓN' },
     ]);
+    const [trash, setTrash] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const handleSave = (newAnimal) => {
+        setAnimals([...animals, { ...newAnimal }]);
+    };
+
+    // Mover a papelera
+    const moveToTrash = (id) => {
+        const animal = animals.find(a => a.id === id);
+        setTrash([...trash, animal]);
+        setAnimals(animals.filter(a => a.id !== id));
+    };
+
+    // Recuperar de papelera
+    const recover = (id) => {
+        const animal = trash.find(a => a.id === id);
+        setAnimals([...animals, animal]);
+        setTrash(trash.filter(a => a.id !== id));
+    };
+
+    // Borrar PARA SIEMPRE
+    const permanentDelete = (id) => {
+        if (window.confirm("¿Eliminar permanentemente? Esta acción no se puede deshacer.")) {
+            setTrash(trash.filter(a => a.id !== id));
+        }
+    };
+
+    const filtered = animals.filter(a => a.lote.toLowerCase().includes(searchTerm.toLowerCase()));
 
     return (
-        <main className="p-8 bg-[#f8fafc] min-h-screen">
-            <div className="max-w-6xl mx-auto">
-
-                {/* Encabezado con el botón que abre el Modal */}
-                <header className="flex justify-between items-center mb-8">
-                    <h1 className="text-2xl font-bold text-slate-800 font-serif italic">Inventario Detallado</h1>
-                    <button
-                        onClick={() => setIsModalOpen(true)}
-                        className="bg-emerald-800 text-white px-6 py-2 rounded-lg font-bold text-sm shadow-md hover:bg-emerald-900 transition-all"
-                    >
-                        + Añadir Animal
-                    </button>
-                </header>
-
-                {/* Llamamos a la Tabla */}
-                <div className="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
-                    <AnimalTable animals={animals} />
+        <div className="space-y-10">
+            {/* SECCIÓN PRINCIPAL */}
+            <div className="space-y-4">
+                <div className="flex justify-between items-center bg-white p-6 rounded-[2rem] shadow-sm">
+                    <h2 className="text-2xl font-black italic">Inventario Activo</h2>
+                    <div className="flex gap-3">
+                        <input
+                            placeholder="Buscar por Lote..."
+                            className="border rounded-xl px-4 py-2 text-sm outline-none focus:border-emerald-400"
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                        <button onClick={() => setIsModalOpen(true)} className="bg-emerald-400 font-bold px-6 py-2 rounded-xl shadow-lg hover:scale-105 transition-transform">
+                            + Añadir Cerdo
+                        </button>
+                    </div>
                 </div>
-
-                {/* Llamamos al Modal */}
-                <AddAnimalModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-
+                <AnimalTable animals={filtered} onDelete={moveToTrash} />
             </div>
-        </main>
+
+            {/* SECCIÓN PAPELERA (Solo aparece si hay algo) */}
+            {trash.length > 0 && (
+                <div className="space-y-4 opacity-80">
+                    <div className="flex items-center gap-4 bg-slate-200/50 p-4 rounded-2xl">
+                        <span className="text-xl">🗑️</span>
+                        <h3 className="font-bold text-slate-600 uppercase tracking-widest text-sm">Papelera de Reciclaje ({trash.length})</h3>
+                    </div>
+                    <AnimalTable
+                        animals={trash}
+                        isTrash={true}
+                        onRecover={recover}
+                        onPermanentDelete={permanentDelete}
+                    />
+                </div>
+            )}
+
+            <AddAnimalModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSave={handleSave} />
+        </div>
     );
 };
 
