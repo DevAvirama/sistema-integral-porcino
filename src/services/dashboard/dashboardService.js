@@ -1,14 +1,14 @@
 export function getDashboardData() {
   return {
     sidebarItems: [
-      'Inicio',
-      'Alimentacion',
-      'Registro de peso',
-      'Reproduccion',
-      'Inventario y ventas',
-      'Vacunacion',
-      'Alertas y reportes',
-      'Configuracion de usuarios',
+      { name: 'Inicio', path: '/dashboard' },
+      { name: 'Alimentacion', path: '/dashboard/feeding' },
+      { name: 'Registro de peso', path: '/dashboard/weight' },
+      { name: 'Reproduccion', path: '/dashboard/reproduction' },
+      { name: 'Inventario y ventas', path: '/dashboard/animals' },
+      { name: 'Vacunacion', path: '/dashboard/health' },
+      { name: 'Alertas y reportes', path: '/dashboard/reports' },
+      { name: 'Configuracion de usuarios', path: '/dashboard/settings' },
     ],
     stats: [
       {
