@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom'
 import Card from '../../../components/ui/Card.jsx'
 import Button from '../../../components/ui/Button.jsx'
 
 function QuickActions({ actions }) {
+  const navigate = useNavigate()
   return (
     <Card className="mt-6 rounded-[2rem]">
       <div className="flex items-center gap-3">
@@ -18,8 +20,13 @@ function QuickActions({ actions }) {
 
       <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {actions.map((action) => (
-          <Button key={action} tone="soft" className="justify-start text-left">
-            {action}
+          <Button 
+            key={action.label} 
+            tone="soft" 
+            className="justify-start text-left hover:scale-[1.02] transition-transform"
+            onClick={() => navigate(action.path)}
+          >
+            {action.label}
           </Button>
         ))}
       </div>

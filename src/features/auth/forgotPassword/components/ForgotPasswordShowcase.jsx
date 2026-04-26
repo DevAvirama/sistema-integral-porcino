@@ -1,4 +1,4 @@
-import BrandMark from '../../../components/BrandMark.jsx'
+import BrandMark from '../../../../components/BrandMark.jsx'
 
 function ForgotPasswordShowcase() {
   return (

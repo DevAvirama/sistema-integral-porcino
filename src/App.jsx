@@ -4,6 +4,8 @@ import LandingPage from './pages/LandingPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import ForgotPasswordPage from './pages/ForgotPasswordPage.jsx'
 import AnimalsPage from './pages/dashboard/AnimalsPage.jsx';
+import InventoryPage from './pages/dashboard/InventoryPage.jsx';
+import AnimalProfilePage from './pages/dashboard/AnimalProfilePage.jsx';
 import FeedingPage from './pages/dashboard/FeedingPage.jsx';
 import WeightPage from './pages/dashboard/WeightPage.jsx';
 import ReproductionPage from './pages/dashboard/ReproductionPage.jsx';
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <DashboardView />, 
     children: [
+      {
+        path: 'inventory',
+        element: <InventoryPage />,
+      },
+      {
+        path: 'inventory/profile',
+        element: <AnimalProfilePage />,
+      },
       {
         path: 'animals', 
         element: <AnimalsPage />,

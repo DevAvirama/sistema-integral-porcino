@@ -7,13 +7,6 @@ export default function DashboardSidebar({ items }) {
     <aside className="w-full bg-slate-950 px-6 py-8 text-white xl:min-h-screen xl:w-80 xl:px-8">
       <BrandMark light />
 
-      <div className="mt-10 rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
-        <p className="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-300">
-          Estado general
-        </p>
-        <p className="mt-3 text-3xl font-black">Operativo</p>
-      </div>
-
       <nav className="mt-8 grid gap-2">
         {items.map((item) => (
           <NavLink

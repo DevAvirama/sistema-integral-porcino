@@ -43,7 +43,6 @@ const AnimalsView = () => {
             {/* SECCIÓN PRINCIPAL */}
             <div className="space-y-4">
                 <div className="flex justify-between items-center bg-white p-6 rounded-[2rem] shadow-sm">
-                    <h2 className="text-2xl font-black italic">Inventario Activo</h2>
                     <div className="flex gap-3">
                         <input
                             placeholder="Buscar por Lote..."

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import Button from '../../../components/ui/Button.jsx'
-import Input from '../../../components/ui/Input.jsx'
-import Card from '../../../components/ui/Card.jsx'
-import BrandMark from '../../../components/BrandMark.jsx'
+import Button from '../../../../components/ui/Button.jsx'
+import Input from '../../../../components/ui/Input.jsx'
+import Card from '../../../../components/ui/Card.jsx'
+import BrandMark from '../../../../components/BrandMark.jsx'
 
 function ForgotPasswordForm({ fields, onChange, onSubmit }) {
   return (

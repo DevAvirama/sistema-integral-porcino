@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import AuthSplitLayout from '../../components/layout/AuthSplitLayout.jsx'
-import useFormFields from '../../hooks/useFormFields.js'
+import AuthSplitLayout from '../../../components/layout/AuthSplitLayout.jsx'
+import useFormFields from '../../../hooks/useFormFields.js'
 import ForgotPasswordForm from './components/ForgotPasswordForm.jsx'
 import ForgotPasswordShowcase from './components/ForgotPasswordShowcase.jsx'
 

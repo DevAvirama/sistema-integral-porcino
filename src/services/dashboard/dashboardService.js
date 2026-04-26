@@ -2,10 +2,11 @@ export function getDashboardData() {
   return {
     sidebarItems: [
       { name: 'Inicio', path: '/dashboard' },
+      { name: 'Inventario', path: '/dashboard/inventory' },
+      { name: 'Registro de animales', path: '/dashboard/animals' },
       { name: 'Alimentacion', path: '/dashboard/feeding' },
       { name: 'Registro de peso', path: '/dashboard/weight' },
       { name: 'Reproduccion', path: '/dashboard/reproduction' },
-      { name: 'Inventario y ventas', path: '/dashboard/animals' },
       { name: 'Vacunacion', path: '/dashboard/health' },
       { name: 'Alertas y reportes', path: '/dashboard/reports' },
       { name: 'Configuracion de usuarios', path: '/dashboard/settings' },
@@ -34,10 +35,10 @@ export function getDashboardData() {
       },
     ],
     quickActions: [
-      'Registrar nuevo cerdo',
-      'Ver inventario',
-      'Registrar alimentacion',
-      'Ver reportes de salud',
+      { label: 'Registrar nuevo cerdo', path: '/dashboard/animals' },
+      { label: 'Ver inventario', path: '/dashboard/inventory' },
+      { label: 'Registrar alimentacion', path: '/dashboard/feeding' },
+      { label: 'Ver reportes de salud', path: '/dashboard/health' },
     ],
     recentActivity: [
       { id: 1, title: 'Nuevo lote registrado', meta: 'Hace 2 horas', area: 'Sector B-04' },
