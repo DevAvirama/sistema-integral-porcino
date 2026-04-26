@@ -18,7 +18,7 @@ import Button from '../../components/ui/Button.jsx'
 import { landingFeatures, landingStats } from './data.js'
 
 // Imgs
-import heroImg from '../../assets/hero.png'
+import heroImg from '../../assets/cerdito.jpg'
 
 export default function LandingView() {
   return (
@@ -60,7 +60,7 @@ export default function LandingView() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-green-100/40 via-yellow-100/20 to-blue-50/40 blur-3xl -z-10 rounded-full"></div>
           
           <div className="relative z-10 w-full max-w-lg rounded-3xl border border-white/40 bg-white/40 p-3 shadow-2xl backdrop-blur-md overflow-hidden">
-            <div className="rounded-2xl border border-black/5 bg-slate-100 overflow-hidden relative">
+            <div className="rounded-2xl border border-black/5 bg-slate-100 overflow-hidden relative aspect-[4/3]">
               {/* Fake dashboard header details */}
               <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur border border-white p-4 rounded-xl shadow-lg z-20">
                 <div className="flex justify-between items-center mb-2">
@@ -82,9 +82,7 @@ export default function LandingView() {
               </div>
 
               {/* Using hero image as the mock content if it corresponds, otherwise a stylized slate box */}
-              <img src={heroImg} alt="Dashboard Preview" className="w-full h-auto object-cover opacity-90 mix-blend-multiply" onError={(e) => e.target.style.display='none'} />
-              {/* Fallback solid background block mostly to simulate the clean look in screenshot */}
-              <div className="w-full aspect-[4/3] bg-gradient-to-b from-slate-200 to-slate-100"></div>
+              <img src={heroImg} alt="Cerdito PorciTech" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105" onError={(e) => e.target.style.display='none'} />
             </div>
           </div>
         </div>
