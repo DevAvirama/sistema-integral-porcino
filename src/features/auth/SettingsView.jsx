@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UserPlus, Shield, Key, Bell, Edit2, Lock } from 'lucide-react';
+import { UserPlus, Shield, Key, Bell, Edit2, Lock, Tag } from 'lucide-react';
 import Card from '../../components/ui/Card.jsx';
 import Button from '../../components/ui/Button.jsx';
 import Table from '../../components/ui/Table.jsx';
@@ -16,12 +16,67 @@ const SettingsView = () => {
         avatar: 'AR'
     };
 
-    const teamData = [
+    const initialTeamData = [
         { id: 1, name: 'Dr. Alejandro Ruiz', role: 'Administrador', lastLogin: 'Hace 5 mins', status: 'Activo' },
         { id: 2, name: 'Dra. María Silva', role: 'Veterinario', lastLogin: 'Hace 2 horas', status: 'Activo' },
         { id: 3, name: 'Carlos Mendoza', role: 'Operario', lastLogin: 'Hace 1 día', status: 'Activo' },
         { id: 4, name: 'Luis Fernando', role: 'Operario', lastLogin: 'Hace 1 mes', status: 'Inactivo' }
     ];
+
+    const [teamData, setTeamData] = useState(initialTeamData);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [editingUser, setEditingUser] = useState(null);
+
+    // Form states
+    const [formName, setFormName] = useState('');
+    const [formRole, setFormRole] = useState('Operario');
+    const [formStatus, setFormStatus] = useState('Activo');
+
+    // Password states
+    const [currentPassword, setCurrentPassword] = useState('');
+    const [newPassword, setCurrentNewPassword] = useState('');
+
+    const handleOpenModal = (user = null) => {
+        if (user) {
+            setEditingUser(user);
+            setFormName(user.name);
+            setFormRole(user.role);
+            setFormStatus(user.status);
+        } else {
+            setEditingUser(null);
+            setFormName('');
+            setFormRole('Operario');
+            setFormStatus('Activo');
+        }
+        setIsModalOpen(true);
+    };
+
+    const handleSaveUser = (e) => {
+        e.preventDefault();
+        if (editingUser) {
+            setTeamData(teamData.map(u => u.id === editingUser.id ? { ...u, name: formName, role: formRole, status: formStatus } : u));
+        } else {
+            const newUser = {
+                id: Date.now(),
+                name: formName || 'Nuevo Usuario',
+                role: formRole,
+                lastLogin: 'Nunca',
+                status: formStatus
+            };
+            setTeamData([...teamData, newUser]);
+        }
+        setIsModalOpen(false);
+    };
+
+    const handleUpdatePassword = () => {
+        if (!currentPassword || !newPassword) {
+            alert('Por favor completa ambos campos de contraseña.');
+            return;
+        }
+        alert('Credenciales actualizadas exitosamente.');
+        setCurrentPassword('');
+        setCurrentNewPassword('');
+    };
 
     const teamCols = [
         { 
@@ -46,7 +101,7 @@ const SettingsView = () => {
                     'Operario': 'bg-slate-100 text-slate-700'
                 };
                 return (
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${roleColors[row.role]}`}>
+                    <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${roleColors[row.role] || roleColors['Operario']}`}>
                         {row.role}
                     </span>
                 );
@@ -65,9 +120,9 @@ const SettingsView = () => {
         {
             header: 'Acciones',
             key: 'actions',
-            render: () => (
-                <Button tone="soft" className="!px-3 !py-1.5 text-xs flex items-center gap-1.5 font-bold rounded-lg hover:bg-slate-200 text-slate-600 border border-slate-200 shadow-sm">
-                    <Edit2 size={14} /> Editar Permisos
+            render: (row) => (
+                <Button onClick={() => handleOpenModal(row)} tone="soft" className="!px-3 !py-1.5 text-xs flex items-center gap-1.5 font-bold rounded-lg hover:bg-slate-200 text-slate-600 border border-slate-200 shadow-sm">
+                    <Edit2 size={14} /> Editar
                 </Button>
             )
         }
@@ -107,7 +162,7 @@ const SettingsView = () => {
                             <h3 className="text-xl font-black italic text-slate-900">Gestión de Equipo</h3>
                             <p className="text-slate-500 text-sm mt-1">Administra los accesos y roles del personal.</p>
                         </div>
-                        <Button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold !rounded-xl shadow-md shadow-indigo-500/20 border-none flex items-center gap-2">
+                        <Button onClick={() => handleOpenModal()} className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold !rounded-xl shadow-md shadow-indigo-500/20 border-none flex items-center gap-2">
                             <UserPlus size={18} /> Nuevo Usuario
                         </Button>
                     </div>
@@ -167,13 +222,17 @@ const SettingsView = () => {
                                     type="password" 
                                     placeholder="Contraseña actual" 
                                     icon={<Lock size={16} />} 
+                                    value={currentPassword}
+                                    onChange={(e) => setCurrentPassword(e.target.value)}
                                 />
                                 <Input 
                                     type="password" 
                                     placeholder="Nueva contraseña" 
                                     icon={<Key size={16} />} 
+                                    value={newPassword}
+                                    onChange={(e) => setCurrentNewPassword(e.target.value)}
                                 />
-                                <Button className="w-full mt-2 font-bold bg-slate-900 hover:bg-slate-800 text-white !rounded-xl">
+                                <Button onClick={handleUpdatePassword} className="w-full mt-2 font-bold bg-slate-900 hover:bg-slate-800 text-white !rounded-xl">
                                     Actualizar Credenciales
                                 </Button>
                             </div>
@@ -181,6 +240,77 @@ const SettingsView = () => {
                     </Card>
                 </div>
             </div>
+
+            {/* Modal para Crear/Editar Usuario */}
+            {isModalOpen && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
+                    <Card as="form" onSubmit={handleSaveUser} className="w-full max-w-md !p-8 !rounded-[2.5rem] shadow-2xl relative border border-slate-100">
+                        <button 
+                            type="button" 
+                            onClick={() => setIsModalOpen(false)} 
+                            className="absolute top-6 right-6 text-slate-400 hover:text-slate-700 font-bold bg-slate-100 w-8 h-8 rounded-full flex items-center justify-center transition-colors"
+                        >
+                            ✕
+                        </button>
+                        <h2 className="text-2xl font-black mb-6 text-slate-900 flex items-center gap-2">
+                            <div className="p-2 bg-indigo-100 rounded-xl text-indigo-600">
+                                <Tag className="w-6 h-6" />
+                            </div>
+                            {editingUser ? 'Editar Usuario' : 'Nuevo Usuario'}
+                        </h2>
+                        
+                        <div className="space-y-4">
+                            <Input 
+                                label="Nombre Completo" 
+                                placeholder="Ej: Juan Pérez" 
+                                required 
+                                value={formName}
+                                onChange={(e) => setFormName(e.target.value)}
+                            />
+                            
+                            <div className="space-y-2">
+                                <label className="text-sm font-bold text-slate-700">Rol</label>
+                                <div className="relative">
+                                    <select 
+                                        value={formRole}
+                                        onChange={(e) => setFormRole(e.target.value)}
+                                        className="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 outline-none font-medium text-slate-700 focus:ring-2 focus:ring-indigo-500 appearance-none"
+                                    >
+                                        <option value="Administrador">Administrador</option>
+                                        <option value="Veterinario">Veterinario</option>
+                                        <option value="Operario">Operario</option>
+                                    </select>
+                                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 text-xs">▼</div>
+                                </div>
+                            </div>
+                            
+                            <div className="space-y-2">
+                                <label className="text-sm font-bold text-slate-700">Estado</label>
+                                <div className="relative">
+                                    <select 
+                                        value={formStatus}
+                                        onChange={(e) => setFormStatus(e.target.value)}
+                                        className="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 outline-none font-medium text-slate-700 focus:ring-2 focus:ring-indigo-500 appearance-none"
+                                    >
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
+                                    </select>
+                                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 text-xs">▼</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="flex gap-4 mt-8">
+                            <Button type="button" tone="soft" onClick={() => setIsModalOpen(false)} className="flex-1 font-bold !rounded-xl">
+                                Cancelar
+                            </Button>
+                            <Button type="submit" className="flex-1 font-black bg-indigo-600 hover:bg-indigo-700 text-white border-none shadow-md shadow-indigo-500/30 !rounded-xl">
+                                Guardar
+                            </Button>
+                        </div>
+                    </Card>
+                </div>
+            )}
         </div>
     );
 };
