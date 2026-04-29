@@ -1,6 +1,7 @@
 import DashboardSidebar from '../../components/layout/DashboardSidebar.jsx'
 import Card from '../../components/ui/Card.jsx'
 import { getDashboardData } from '../../services/dashboard/dashboardService.js'
+import { getCurrentUser } from '../../services/auth/authService.js'
 import QuickActions from './components/QuickActions.jsx'
 import { Outlet, useLocation } from 'react-router-dom'
 import RecentActivityTable from './components/RecentActivityTable.jsx'
@@ -9,14 +10,16 @@ import SystemSuggestion from './components/SystemSuggestion.jsx'
 
 function DashboardView() {
   const { sidebarItems, stats, quickActions, recentActivity } = getDashboardData()
-  const location = useLocation() // Crea la constante location
+  const location = useLocation()
+  const currentUser = getCurrentUser()
+  const userRole = currentUser ? currentUser.role : 'operativo'
 
   // Verifica si estamos exactamente en el inicio del dashboard
   const isDashboardHome = location.pathname === '/dashboard' || location.pathname === '/dashboard/'
   return (
     <main className="min-h-screen bg-slate-100 text-slate-900">
       <div className="mx-auto flex min-h-screen w-full flex-col xl:flex-row">
-        <DashboardSidebar items={sidebarItems} />
+        <DashboardSidebar items={sidebarItems} userRole={userRole} />
 
         <section className="flex-1 px-6 py-8 lg:px-10">
           {isDashboardHome && (

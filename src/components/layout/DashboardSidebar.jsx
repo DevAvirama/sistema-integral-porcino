@@ -2,13 +2,27 @@ import { Link, NavLink } from 'react-router-dom'
 import BrandMark from '../BrandMark.jsx'
 import Button from '../ui/Button.jsx'
 
-export default function DashboardSidebar({ items }) {
+export default function DashboardSidebar({ items, userRole = 'administrador' }) {
+  // Lógica de filtrado basada en el rol
+  const filteredItems = items.filter(item => {
+    if (userRole === 'veterinario') {
+      // Veterinario no ve Alimentación ni Peso
+      return !['/dashboard/feeding', '/dashboard/weight'].includes(item.path);
+    }
+    if (userRole === 'operativo') {
+      // Operativo no ve Salud, Reproducción, Reportes ni Configuración
+      return !['/dashboard/health', '/dashboard/reproduction', '/dashboard/reports', '/dashboard/settings'].includes(item.path);
+    }
+    // Administrador u otros ven todo
+    return true;
+  });
+
   return (
-    <aside className="w-full bg-slate-950 px-6 py-8 text-white xl:min-h-screen xl:w-80 xl:px-8">
+    <aside className="w-full bg-slate-950 px-6 py-8 text-white xl:min-h-screen xl:w-80 xl:px-8 flex flex-col">
       <BrandMark light />
 
-      <nav className="mt-8 grid gap-2">
-        {items.map((item) => (
+      <nav className="mt-8 grid gap-2 flex-1">
+        {filteredItems.map((item) => (
           <NavLink
             key={item.path}
             to={item.path}
@@ -29,10 +43,7 @@ export default function DashboardSidebar({ items }) {
       <Button as={Link} className="mt-8" to="/" tone="ghost">
         Volver a la landing
       </Button>
-
-      
     </aside>
   )
 }
-
 

@@ -12,6 +12,7 @@ import ReproductionPage from './pages/dashboard/ReproductionPage.jsx';
 import HealthPage from './pages/dashboard/HealthPage.jsx';
 import ReportsPage from './pages/dashboard/ReportsPage.jsx';
 import SettingsPage from './pages/dashboard/SettingsPage.jsx';
+import ProtectedRoute from './components/auth/ProtectedRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -52,19 +53,35 @@ const router = createBrowserRouter([
       },
       {
         path: 'reproduction',
-        element: <ReproductionPage />,
+        element: (
+          <ProtectedRoute allowedRoles={['administrador', 'veterinario']}>
+            <ReproductionPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: 'health',
-        element: <HealthPage />,
+        element: (
+          <ProtectedRoute allowedRoles={['administrador', 'veterinario']}>
+            <HealthPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: 'reports',
-        element: <ReportsPage />,
+        element: (
+          <ProtectedRoute allowedRoles={['administrador', 'veterinario']}>
+            <ReportsPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: 'settings',
-        element: <SettingsPage />,
+        element: (
+          <ProtectedRoute allowedRoles={['administrador']}>
+            <SettingsPage />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

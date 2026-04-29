@@ -14,8 +14,12 @@ function LoginView() {
 
   async function handleSubmit(event) {
     event.preventDefault()
-    await signIn(fields)
-    navigate('/dashboard')
+    const response = await signIn(fields)
+    if (response.ok) {
+      navigate('/dashboard')
+    } else {
+      alert(response.error || 'Credenciales incorrectas')
+    }
   }
 
   return (
