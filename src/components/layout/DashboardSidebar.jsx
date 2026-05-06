@@ -1,13 +1,13 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import BrandMark from '../BrandMark.jsx'
 import Button from '../ui/Button.jsx'
-import { authService } from '../../services/auth/authService.js'
+import { getCurrentUser, logout } from '../../services/auth/authService.js'
 
 export default function DashboardSidebar({ items }) {
   const navigate = useNavigate();
 
   // Obtenemos el usuario real logueado. Si no hay, asignamos operativo por seguridad.
-  const user = authService.getCurrentUser ? authService.getCurrentUser() : JSON.parse(localStorage.getItem('user'));
+  const user = getCurrentUser() || JSON.parse(localStorage.getItem('sigep_user'));
   const userRole = user?.role || 'operativo'; 
 
   // Lógica de filtrado basada en el rol
@@ -26,11 +26,7 @@ export default function DashboardSidebar({ items }) {
 
   // Función para cerrar sesión correctamente
   const handleLogout = () => {
-    if (authService.logout) {
-      authService.logout();
-    } else {
-      localStorage.removeItem('user');
-    }
+    logout(); // Llamamos directamente a la función que importamos
     navigate('/login');
   };
 
@@ -52,7 +48,7 @@ export default function DashboardSidebar({ items }) {
         </span>
       </div>
 
-      <nav className="mt-8 grid gap-2 flex-1">
+      <nav className="mt-8 grid gap-2 content-start flex-1">
         {filteredItems.map((item) => (
           <NavLink
             key={item.path}
@@ -71,7 +67,8 @@ export default function DashboardSidebar({ items }) {
         ))}
       </nav>
 
-      <Button className="mt-8" onClick={handleLogout} tone="ghost">
+      {/* mt-auto empuja el botón siempre al fondo */}
+      <Button className="mt-auto" onClick={handleLogout} tone="ghost">
         Cerrar Sesión
       </Button>
     </aside>
