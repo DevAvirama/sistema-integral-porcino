@@ -43,7 +43,8 @@ const InventoryView = () => {
     const [filterEtapa, setFilterEtapa] = useState('');
     const [filterSalud, setFilterSalud] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
-    
+    const [selectedRaza, setSelectedRaza] = useState('');
+
     const handleAddAnimal = () => {
         const newAnimal = { id: `N-${Math.floor(Math.random() * 1000)}`, raza: 'Cruce', sexo: 'Macho', etapa: 'lactancia', ultimoPeso: 1.5, estadoSalud: 'Óptimo' };
         setInventory([newAnimal, ...inventory]);
@@ -231,12 +232,36 @@ const InventoryView = () => {
                             <Input label="ID Animal" placeholder="Ej: L-045" required />
                             <div className="space-y-2">
                                 <label className="text-sm font-bold text-slate-700">Raza</label>
-                                <div className="relative">
-                                    <select className="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 outline-none font-medium text-slate-700 focus:ring-2 focus:ring-indigo-500 appearance-none">
-                                        {inventoryConstants.razas.map(r => <option key={r} value={r}>{r}</option>)}
-                                    </select>
-                                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 text-xs">▼</div>
-                                </div>
+                                <div className="space-y-3">
+
+                        <div className="relative">
+                            <select
+                                value={selectedRaza}
+                                onChange={(e) => setSelectedRaza(e.target.value)}
+                                className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50 outline-none font-medium text-slate-700 focus:ring-2 focus:ring-indigo-500 appearance-none"
+                            >
+                                <option value="">Seleccione una raza</option>
+
+                                {inventoryConstants.razas.map(r => (
+                                    <option key={r} value={r}>
+                                        {r}
+                                    </option>
+                                ))}
+
+                                <option value="Otra">Otra raza...</option>
+                            </select>
+
+                            <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">▼</div>
+                        </div>
+
+                        {selectedRaza === 'Otra' && (
+                            <input
+                                type="text"
+                                placeholder="Ingrese la nueva raza"
+                                className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50 outline-none font-medium text-slate-700 focus:ring-2 focus:ring-indigo-500"
+                            />
+                        )}
+                    </div>
                             </div>
                             <div className="space-y-2">
                                 <label className="text-sm font-bold text-slate-700">Sexo</label>
