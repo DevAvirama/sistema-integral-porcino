@@ -29,13 +29,13 @@ const ReportsView = () => {
             render: (row) => (
                 <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${row.estado === 'Óptimo' ? 'bg-emerald-100 text-emerald-700' : 'bg-orange-100 text-orange-700'}`}>
                     {row.estado}
-                </span>
+                </span>  
             )
         }
     ];
 
     return (
-        <div className="space-y-8 max-w-7xl mx-auto pb-10">
+        <div className="space-y-8 max-w-[1600px] mx-auto pb-10">
             {/* Header del Módulo */}
             <div className="flex justify-between items-center bg-white p-6 rounded-[2rem] shadow-sm border border-slate-100">
                 <div>
