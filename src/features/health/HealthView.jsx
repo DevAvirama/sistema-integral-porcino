@@ -51,8 +51,12 @@ const HealthView = () => {
                     </h2>
                     <p className="text-slate-400 font-medium text-sm mt-1">Control clínico y preventivo de lotes porcinos</p>
                 </div>
-                <Button onClick={() => setIsModalOpen(true)} className="bg-sena-green hover:bg-[#008c42] text-white rounded-full px-8 py-4 font-bold flex gap-2 border-none shadow-lg shadow-emerald-900/10">
-                    <Plus size={20} /> Registrar Evento Sanitario
+                <Button
+                    onClick={() => setIsModalOpen(true)}
+                    className="bg-sena-green hover:bg-sena-green hover:-translate-y-1 hover:shadow-xl text-white rounded-full px-8 py-4 font-bold flex gap-2 border-none shadow-lg shadow-emerald-900/10 transition-all duration-200"
+                >
+                    <Plus size={20} />
+                    Registrar Evento Sanitario
                 </Button>
             </div>
 

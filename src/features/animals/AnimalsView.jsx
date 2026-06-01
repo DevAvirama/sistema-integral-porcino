@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import AnimalTable from './components/AnimalTable';
 import AddAnimalModal from './components/AddAnimalModal';
+import Card from '../../components/ui/Card';
+import { PiggyBank } from 'lucide-react';
 
 const AnimalsView = () => {
     const [animals, setAnimals] = useState([
@@ -39,7 +41,19 @@ const AnimalsView = () => {
     const filtered = animals.filter(a => a.lote.toLowerCase().includes(searchTerm.toLowerCase()));
 
     return (
-        <div className="space-y-10">
+        <div className="space-y-8 max-w-[1600px] mx-auto pb-10">
+            {/* Cabecera */}
+            <Card as="header" className="flex flex-col gap-4 !rounded-[2rem] lg:flex-row lg:items-center lg:justify-between border-t-4 border-[#FFC000]">
+                <div>
+                    <h2 className="text-3xl font-black text-slate-900 flex items-center gap-3">
+                        <PiggyBank className="text-[#39A900] h-7 w-7" />
+                        Registro de animales
+                    </h2>
+                    <p className="text-slate-500 mt-2 font-medium">Gestión y control del inventarioporcino.</p>
+                </div>
+            </Card>
+
+            <div className="space-y-10">
             {/* SECCIÓN PRINCIPAL */}
             <div className="space-y-4">
                 <div className="flex justify-between items-center bg-white p-6 rounded-[2rem] shadow-sm">
@@ -49,7 +63,10 @@ const AnimalsView = () => {
                             className="border rounded-xl px-4 py-2 text-sm outline-none focus:border-emerald-400"
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
-                        <button onClick={() => setIsModalOpen(true)} className="bg-emerald-400 font-bold px-6 py-2 rounded-xl shadow-lg hover:scale-105 transition-transform">
+                       <button
+                            onClick={() => setIsModalOpen(true)}
+                            className="bg-[#FFC000] font-bold px-6 py-2 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
+                        >
                             + Añadir Cerdo
                         </button>
                     </div>
@@ -74,6 +91,7 @@ const AnimalsView = () => {
             )}
 
             <AddAnimalModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSave={handleSave} />
+        </div>
         </div>
     );
 };

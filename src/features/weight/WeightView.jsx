@@ -208,11 +208,11 @@ const WeightView = () => {
     return (
         <div className="space-y-8 max-w-[1600px] mx-auto pb-10">
             {/* Cabecera y Acciones Principales */}
-            <Card as="header" className="flex flex-col gap-6 !rounded-[2rem] lg:flex-row lg:items-center lg:justify-between border-t-4 border-t-blue-500">
+            <Card as="header" className="flex flex-col gap-6 !rounded-[2rem] lg:flex-row lg:items-center lg:justify-between border-t-4 border-t-[#00324D]">
                 <div>
                     <h2 className="text-3xl font-black text-slate-900 flex items-center gap-3">
-                        <div className="p-2 bg-blue-100 rounded-xl">
-                            <Scale className="text-blue-600 w-7 h-7" />
+                        <div className="p-2 bg-[#00324D] rounded-xl">
+                            <Scale className="text-gray-200 w-7 h-7" />
                         </div>
                         Registro y Control de Pesajes
                     </h2>
@@ -220,7 +220,10 @@ const WeightView = () => {
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
-                    <Button onClick={() => setIsModalOpen(true)} className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white border-none shadow-lg shadow-blue-600/30">
+                    <Button
+                        onClick={() => setIsModalOpen(true)}
+                        className="flex items-center justify-center gap-2 bg-[#001f33] hover:bg-[#001f33] hover:-translate-y-1 hover:shadow-xl text-white border-none shadow-lg shadow-[#001f33]/30 transition-all duration-200"
+                    >
                         <Plus size={20} />
                         Registrar Pesaje
                     </Button>
@@ -253,8 +256,8 @@ const WeightView = () => {
                 </div>
 
                 <Card className="!rounded-2xl !py-4 !px-8 border border-slate-100 shadow-sm flex items-center gap-5 w-full md:w-auto">
-                    <div className="p-3 bg-emerald-100 rounded-xl">
-                        <Activity className="text-emerald-600 w-6 h-6" />
+                    <div className="p-3 bg-[#00324D] rounded-xl">
+                        <Activity className="text-gray-200 w-6 h-6" />
                     </div>
                     <div>
                         <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-0.5">Promedio del Grupo</p>
@@ -282,7 +285,7 @@ const WeightView = () => {
                             ✕
                         </button>
                         <h2 className="text-2xl font-black mb-6 text-slate-900 flex items-center gap-2">
-                            <Scale className="text-blue-500 w-6 h-6" />
+                            <Scale className="text-[#00324D] w-6 h-6" />
                             Nuevo Pesaje
                         </h2>
                         
@@ -316,7 +319,7 @@ const WeightView = () => {
                             <Button type="button" tone="soft" onClick={() => setIsModalOpen(false)} className="flex-1 font-bold !rounded-xl">
                                 Cancelar
                             </Button>
-                            <Button type="submit" className="flex-1 font-black bg-blue-600 hover:bg-blue-700 text-white border-none shadow-md shadow-blue-500/30 !rounded-xl">
+                            <Button type="submit" className="flex-1 font-black bg-[#00324D] hover:bg-[#001f33] text-white border-none shadow-md shadow-[#00324D]/30 !rounded-xl">
                                 Guardar Peso
                             </Button>
                         </div>

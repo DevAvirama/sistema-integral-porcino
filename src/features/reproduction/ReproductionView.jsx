@@ -107,11 +107,11 @@ const ReproductionView = () => {
     return (
         <div className="space-y-8 max-w-[1600px] mx-auto pb-10">
             {/* Cabecera y Acciones Principales */}
-            <Card as="header" className="flex flex-col gap-6 !rounded-[2rem] lg:flex-row lg:items-center lg:justify-between border-t-4 border-t-fuchsia-500">
+            <Card as="header" className="flex flex-col gap-6 !rounded-[2rem] lg:flex-row lg:items-center lg:justify-between border-t-4 border-[#39A900]">
                 <div>
                     <h2 className="text-3xl font-black text-slate-900 flex items-center gap-3">
-                        <div className="p-2 bg-fuchsia-100 rounded-xl">
-                            <Heart className="text-fuchsia-500 w-6 h-6" />
+                        <div className="bg-[#39A900] hover:bg-[#39A900]">
+                            <Heart className="text-emerald-300 w-6 h-6" />
                         </div>
                         Control de Reproducción
                     </h2>
@@ -119,11 +119,17 @@ const ReproductionView = () => {
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
-                    <Button className="flex items-center justify-center gap-2 bg-pink-500 hover:bg-pink-600 text-white border-none shadow-md shadow-pink-500/30">
+                    <Button
+                        className="flex items-center justify-center gap-2 bg-[#39A900] hover:bg-[#39A900] hover:-translate-y-1 hover:shadow-xl text-white border-none shadow-md shadow-[#39A900]/30 transition-all duration-200"
+                    >
                         <Baby size={20} />
                         Registrar Parto
                     </Button>
-                    <Button onClick={() => setIsServiceModalOpen(true)} className="flex items-center justify-center gap-2 bg-fuchsia-500 hover:bg-fuchsia-600 text-white border-none shadow-md shadow-fuchsia-500/30">
+
+                    <Button
+                        onClick={() => setIsServiceModalOpen(true)}
+                        className="flex items-center justify-center gap-2 bg-[#39A900] hover:bg-[#39A900] hover:-translate-y-1 hover:shadow-xl text-white border-none shadow-md shadow-[#39A900]/30 transition-all duration-200"
+                    >
                         <Heart size={20} />
                         Registrar Servicio
                     </Button>

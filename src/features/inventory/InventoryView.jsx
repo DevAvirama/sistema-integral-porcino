@@ -120,18 +120,21 @@ const InventoryView = () => {
     return (
         <div className="space-y-8 max-w-[1600px] mx-auto pb-10">
             {/* Header */}
-            <Card as="header" className="flex flex-col gap-6 !rounded-[2rem] lg:flex-row lg:items-center lg:justify-between border-t-4 border-t-indigo-500">
+            <Card as="header" className="flex flex-col gap-6 !rounded-[2rem] lg:flex-row lg:items-center lg:justify-between border-t-4 border-[#00324D]">
                 <div>
                     <h2 className="text-3xl font-black text-slate-900 flex items-center gap-3">
-                        <div className="p-2 bg-indigo-100 rounded-xl shadow-sm border border-indigo-200/50">
-                            <Layers className="text-indigo-600 w-7 h-7" />
+                        <div className="p-2 bg-[#00324D] rounded-xl shadow-sm border border-[#00324D]/50">
+                            <Layers className="text-white w-7 h-7" />
                         </div>
                         Inventario y Activos
                     </h2>
                     <p className="text-slate-500 mt-2 font-medium">Gestión centralizada del plantel porcino.</p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4">
-                    <Button onClick={() => setIsModalOpen(true)} className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white border-none shadow-lg shadow-indigo-600/30">
+                    <Button
+                        onClick={() => setIsModalOpen(true)}
+                        className="flex items-center justify-center gap-2 bg-sena-green hover:bg-sena-green hover:-translate-y-1 hover:shadow-xl text-white border-none shadow-lg shadow-sena-green/30 transition-all duration-200"
+                    >
                         <Plus size={20} />
                         Añadir Animal
                     </Button>

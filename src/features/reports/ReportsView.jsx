@@ -45,7 +45,7 @@ const ReportsView = () => {
                     </h2>
                     <p className="text-slate-500 mt-1 font-medium">Centro de control y análisis de rendimiento de la granja</p>
                 </div>
-                <Button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold !rounded-xl shadow-md shadow-indigo-500/20 border-none">
+                <Button className="bg-sena-green hover:bg-sena-green hover:-translate-y-1 hover:shadow-xl text-white font-bold !rounded-xl shadow-md shadow-sena-green/20 border-none transition-all duration-200">
                     Exportar PDF
                 </Button>
             </div>

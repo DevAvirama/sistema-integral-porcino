@@ -119,7 +119,7 @@ const SettingsView = () => {
                     </h2>
                     <p className="text-slate-500 mt-1 font-medium">Controla quién tiene acceso a cada módulo del sistema</p>
                 </div>
-                <Button onClick={handleOpenModal} className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold !rounded-xl shadow-md shadow-indigo-500/20 border-none flex items-center gap-2">
+                <Button onClick={handleOpenModal} className="bg-sena-green hover:bg-sena-green hover:-translate-y-1 hover:shadow-xl text-white font-bold !rounded-xl shadow-md shadow-sena-green/20 border-none transition-all duration-200">
                     <UserPlus size={18} /> Crear Nuevo Usuario
                 </Button>
             </div>

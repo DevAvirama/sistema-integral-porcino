@@ -33,15 +33,18 @@ const FeedingView = () => {
     return (
         <div className="space-y-8 max-w-[1600px] mx-auto pb-10">
             {/* Cabecera */}
-            <Card as="header" className="flex flex-col gap-4 !rounded-[2rem] lg:flex-row lg:items-center lg:justify-between border-t-4 border-t-orange-500">
+            <Card as="header" className="flex flex-col gap-4 !rounded-[2rem] lg:flex-row lg:items-center lg:justify-between border-t-4 border-[#FFC000]">
                 <div>
                     <h2 className="text-3xl font-black text-slate-900 flex items-center gap-3">
-                        <Utensils className="text-orange-500 w-8 h-8" />
+                        <Utensils className="text-[#FFC000] w-8 h-8" />
                         Control de Alimentación
                     </h2>
                     <p className="text-slate-500 mt-2 font-medium">Gestión de inventario y consumo diario del plantel.</p>
                 </div>
-                <Button onClick={() => setIsModalOpen(true)} className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 shadow-md shadow-orange-500/30 text-white border-none">
+                <Button
+                    onClick={() => setIsModalOpen(true)}
+                    className="flex items-center gap-2 bg-[#e6ac00] hover:bg-[#e6ac00] hover:-translate-y-1 hover:shadow-xl shadow-md shadow-[#e6ac00]/30 text-white border-none transition-all duration-200"
+                >
                     <Plus size={20} />
                     Registrar Suministro
                 </Button>
