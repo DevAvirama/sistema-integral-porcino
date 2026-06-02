@@ -3,13 +3,12 @@ import logo from '../assets/SENA.png'
 export default function BrandMark({ light }) {
 
   return (
-    <div className="flex items-center gap-3">
-      <img src={logo} alt="Logo SENA" className="h-10 w-auto" />
-      <div>
-        <p className={`text-2xl font-black tracking-tight ${light ? 'text-white' : 'text-sena-blue'}`}>
-          Porci<span className="text-sena-green font-black">Tech</span>
-        </p>
-      </div>
-    </div>
+    <div className="flex flex-col items-center">
+    <img src={logo} alt="SENA" className="h-14 mb-2" />
+
+    <h1 className="text-3xl font-black">
+        Porci<span className="text-[#39A900]">Tech</span>
+    </h1>
+</div>
   )
 }
