@@ -163,13 +163,8 @@ export default function LandingView() {
                     </div>
                   </div>
                </div>
-               <div className="w-[110%] h-4 bg-slate-900 rounded-b-xl z-20 shadow-2xl relative">
-                 <div className="absolute -top-12 -right-8 bg-slate-400 p-4 rounded-full border-4 border-slate-100 shadow-xl hidden sm:block">
-                   <div className="h-10 w-10 relative">
-                     <div className="absolute top-1/2 left-1/2 w-0.5 h-1/2 bg-slate-800 origin-bottom -translate-x-1/2 -translate-y-full rotate-45"></div>
-                     <div className="absolute top-1/2 left-1/2 w-1/2 h-0.5 bg-slate-800 origin-left"></div>
-                   </div>
-                 </div>
+               <div className="w-[110%] h-4 bg-slate-900 rounded-b-xl z-0 shadow-2xl relative">
+                 
                </div>
 
                <div className="absolute bottom-4 left-0 w-full bg-slate-900/60 backdrop-blur pb-4 pt-12 -mt-16 text-center text-white z-0 rounded-b-xl px-4 text-sm font-medium">
