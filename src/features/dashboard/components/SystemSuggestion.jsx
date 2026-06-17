@@ -126,8 +126,8 @@ function SystemSuggestion() {
       </p>
       <h3 className="mt-4 text-3xl font-black">Optimiza el feed del Lote #42</h3>
       <p className="mt-4 leading-7 text-slate-300">
-        Basado en el crecimiento actual, conviene ajustar la racion para mejorar
-        conversion y reducir desperdicio en la siguiente semana.
+        Basado en el crecimiento actual, conviene ajustar la ración para mejorar
+        conversión y reducir desperdicio en la siguiente semana.
       </p>
       <Button className="mt-8" tone="accent" onClick={() => navigate('/dashboard/feeding')}>
         Ver detalles

@@ -9,7 +9,7 @@ function LoginShowcase() {
           Acceso seguro
         </p>
         <h1 className="mt-4 text-5xl font-black tracking-tight">
-          Bienvenido al Sistema Integral de Gestion Porcina
+          Bienvenido al Sistema Integral de Gestión Porcina
         </h1>
       </div>
     </div>

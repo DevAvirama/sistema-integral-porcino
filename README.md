@@ -68,4 +68,4 @@ git clone [https://github.com/tu-usuario/nombre-del-repo.git](https://github.com
     
     [ ] Consumo de JSON: Simular una base de datos usando un archivo .json local para practicar cómo se reciben datos.
 
-Desarrollado  por Santiago, Camilo, Mariana, Yuliana y Emile - Aprendices ADSO SENA CTPI.
+Desarrollado por Santiago, Camilo, Mariana, Yuliana y Emile - Aprendices ADSO SENA CTPI.

@@ -6,7 +6,7 @@ const AddAnimalModal = ({ isOpen, onClose, onSave }) => {
     if (!isOpen) return null;
 
     const handleSubmit = (e) => {
-        e.preventDefault(); // <--- ESTO EVITA QUE LA PAGINA SE REINICIE
+        e.preventDefault(); // <--- ESTO EVITA QUE LA PÁGINA SE REINICIE
         onSave(form);
         onClose();
         setForm({ id: '', raza: 'Duroc', edad: '', lote: '', estado: 'SALUDABLE' }); // Limpiar

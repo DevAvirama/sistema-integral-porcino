@@ -12,7 +12,7 @@ function QuickActions({ actions }) {
         </div>
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-slate-500">
-            Accesos rapidos
+            Accesos rápidos
           </p>
           <h2 className="text-2xl font-black text-slate-950">Acciones frecuentes</h2>
         </div>

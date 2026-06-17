@@ -29,7 +29,7 @@ function DashboardView() {
                   Dashboard general
                 </p>
                 <h1 className="mt-3 text-4xl font-black tracking-tight text-slate-950">
-                  Resumen de informacion clave
+                  Resumen de información clave
                 </h1>
               </div>
               <div className="rounded-2xl bg-slate-950 px-5 py-4 text-white">

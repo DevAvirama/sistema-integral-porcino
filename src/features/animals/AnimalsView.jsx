@@ -49,49 +49,49 @@ const AnimalsView = () => {
                         <PiggyBank className="text-[#39A900] h-7 w-7" />
                         Registro de animales
                     </h2>
-                    <p className="text-slate-500 mt-2 font-medium">Gestión y control del inventarioporcino.</p>
+                    <p className="text-slate-500 mt-2 font-medium">Gestión y control del inventario porcino.</p>
                 </div>
             </Card>
 
             <div className="space-y-10">
-            {/* SECCIÓN PRINCIPAL */}
-            <div className="space-y-4">
-                <div className="flex justify-between items-center bg-white p-6 rounded-[2rem] shadow-sm">
-                    <div className="flex gap-3">
-                        <input
-                            placeholder="Buscar por Lote..."
-                            className="border rounded-xl px-4 py-2 text-sm outline-none focus:border-emerald-400"
-                            onChange={(e) => setSearchTerm(e.target.value)}
+                {/* SECCIÓN PRINCIPAL */}
+                <div className="space-y-4">
+                    <div className="flex justify-between items-center bg-white p-6 rounded-[2rem] shadow-sm">
+                        <div className="flex gap-3">
+                            <input
+                                placeholder="Buscar por Lote..."
+                                className="border rounded-xl px-4 py-2 text-sm outline-none focus:border-emerald-400"
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                            />
+                            <button
+                                onClick={() => setIsModalOpen(true)}
+                                className="bg-[#FFC000] font-bold px-6 py-2 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
+                            >
+                                + Añadir Cerdo
+                            </button>
+                        </div>
+                    </div>
+                    <AnimalTable animals={filtered} onDelete={moveToTrash} />
+                </div>
+
+                {/* SECCIÓN PAPELERA (Solo aparece si hay algo) */}
+                {trash.length > 0 && (
+                    <div className="space-y-4 opacity-80">
+                        <div className="flex items-center gap-4 bg-slate-200/50 p-4 rounded-2xl">
+                            <span className="text-xl">🗑️</span>
+                            <h3 className="font-bold text-slate-600 uppercase tracking-widest text-sm">Papelera de Reciclaje ({trash.length})</h3>
+                        </div>
+                        <AnimalTable
+                            animals={trash}
+                            isTrash={true}
+                            onRecover={recover}
+                            onPermanentDelete={permanentDelete}
                         />
-                       <button
-                            onClick={() => setIsModalOpen(true)}
-                            className="bg-[#FFC000] font-bold px-6 py-2 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
-                        >
-                            + Añadir Cerdo
-                        </button>
                     </div>
-                </div>
-                <AnimalTable animals={filtered} onDelete={moveToTrash} />
+                )}
+
+                <AddAnimalModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSave={handleSave} />
             </div>
-
-            {/* SECCIÓN PAPELERA (Solo aparece si hay algo) */}
-            {trash.length > 0 && (
-                <div className="space-y-4 opacity-80">
-                    <div className="flex items-center gap-4 bg-slate-200/50 p-4 rounded-2xl">
-                        <span className="text-xl">🗑️</span>
-                        <h3 className="font-bold text-slate-600 uppercase tracking-widest text-sm">Papelera de Reciclaje ({trash.length})</h3>
-                    </div>
-                    <AnimalTable
-                        animals={trash}
-                        isTrash={true}
-                        onRecover={recover}
-                        onPermanentDelete={permanentDelete}
-                    />
-                </div>
-            )}
-
-            <AddAnimalModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSave={handleSave} />
-        </div>
         </div>
     );
 };

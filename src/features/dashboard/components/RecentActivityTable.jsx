@@ -4,7 +4,7 @@ import Table from '../../../components/ui/Table.jsx'
 const columns = [
   { key: 'title', header: 'Actividad' },
   { key: 'meta', header: 'Momento' },
-  { key: 'area', header: 'Ubicacion' },
+  { key: 'area', header: 'Ubicación' },
 ]
 
 function RecentActivityTable({ rows }) {

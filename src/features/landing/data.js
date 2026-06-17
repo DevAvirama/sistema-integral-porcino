@@ -7,8 +7,8 @@ export const landingStats = [
 
 export const landingFeatures = [
   {
-    title: 'Analisis Predictivo',
-    body: 'Utiliza algoritmos avanzados para predecir el crecimiento y detectar anomalias en la produccion antes de que ocurran.',
+    title: 'Análisis Predictivo',
+    body: 'Utiliza algoritmos avanzados para predecir el crecimiento y detectar anomalías en la producción antes de que ocurran.',
   },
   {
     title: 'Salud Animal',
@@ -16,6 +16,6 @@ export const landingFeatures = [
   },
   {
     title: 'Alertas Inteligentes',
-    body: 'Sistema de notificaciones en tiempo real directo a tu movil sobre niveles de alimento, temperatura y seguridad.',
+    body: 'Sistema de notificaciones en tiempo real directo a tu móvil sobre niveles de alimento, temperatura y seguridad.',
   },
 ]

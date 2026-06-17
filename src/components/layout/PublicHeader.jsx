@@ -12,7 +12,7 @@ export default function PublicHeader() {
             Inicio
           </a>
           <a href="#caracteristicas" className="transition hover:text-slate-950">
-            Caracteristicas
+            Características
           </a>
           <a href="#impacto" className="transition hover:text-slate-950">
             Impacto

@@ -10,7 +10,7 @@ function LoginForm({ fields, onChange, onSubmit }) {
       <div className="mb-8 flex items-start justify-between">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-emerald-700">
-            Iniciar sesion
+            Iniciar sesión
           </p>
           <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950">
             Ingresa a tu cuenta
@@ -31,7 +31,7 @@ function LoginForm({ fields, onChange, onSubmit }) {
         />
 
         <Input
-          label="Contrasena"
+          label="Contraseña"
           name="password"
           type="password"
           value={fields.password}
@@ -40,7 +40,7 @@ function LoginForm({ fields, onChange, onSubmit }) {
 
         <div className="flex items-center justify-between gap-4 text-sm">
           <Link to="/forgot-password" className="font-medium text-emerald-700 transition hover:text-emerald-800">
-            ¿Olvidaste tu contrasena?
+            ¿Olvidaste tu contraseña?
           </Link>
           <span className="rounded-full bg-slate-100 px-3 py-1 font-medium text-slate-500">
             Demo
@@ -53,7 +53,7 @@ function LoginForm({ fields, onChange, onSubmit }) {
       </form>
 
       <div className="mt-8 border-t border-slate-200 pt-6 text-sm text-slate-600">
-        <p>Vista basada en el modulo de inicio de sesion del repositorio original.</p>
+        <p>Vista basada en el módulo de inicio de sesión del repositorio original.</p>
         <Link to="/" className="mt-3 inline-flex font-semibold text-emerald-700 hover:text-emerald-800">
           Volver a la landing
         </Link>

@@ -1,5 +1,5 @@
 export const authModule = {
   key: 'auth',
-  name: 'Autenticacion',
+  name: 'Autenticación',
   routes: ['/login'],
 }

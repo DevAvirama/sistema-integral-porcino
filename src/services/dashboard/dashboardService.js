@@ -4,12 +4,12 @@ export function getDashboardData() {
       { name: 'Inicio', path: '/dashboard' },
       { name: 'Inventario', path: '/dashboard/inventory' },
       { name: 'Registro de animales', path: '/dashboard/animals' },
-      { name: 'Alimentacion', path: '/dashboard/feeding' },
+      { name: 'Alimentación', path: '/dashboard/feeding' },
       { name: 'Registro de peso', path: '/dashboard/weight' },
-      { name: 'Reproduccion', path: '/dashboard/reproduction' },
-      { name: 'Vacunacion', path: '/dashboard/health' },
+      { name: 'Reproducción', path: '/dashboard/reproduction' },
+      { name: 'Vacunación', path: '/dashboard/health' },
       { name: 'Alertas y reportes', path: '/dashboard/reports' },
-      { name: 'Configuracion de usuarios', path: '/dashboard/settings' },
+      { name: 'Configuración de usuarios', path: '/dashboard/settings' },
     ],
     stats: [
       {
@@ -37,12 +37,12 @@ export function getDashboardData() {
     quickActions: [
       { label: 'Registrar nuevo cerdo', path: '/dashboard/animals' },
       { label: 'Ver inventario', path: '/dashboard/inventory' },
-      { label: 'Registrar alimentacion', path: '/dashboard/feeding' },
+      { label: 'Registrar alimentación', path: '/dashboard/feeding' },
       { label: 'Ver reportes de salud', path: '/dashboard/health' },
     ],
     recentActivity: [
       { id: 1, title: 'Nuevo lote registrado', meta: 'Hace 2 horas', area: 'Sector B-04' },
-      { id: 2, title: 'Vacunacion completada', meta: 'Hace 5 horas', area: 'Sector A-12' },
+      { id: 2, title: 'Vacunación completada', meta: 'Hace 5 horas', area: 'Sector A-12' },
       { id: 3, title: 'Alerta de peso bajo', meta: 'Ayer', area: 'Corral 09' },
     ],
   }
